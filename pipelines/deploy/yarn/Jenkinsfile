@@ -36,7 +36,7 @@ node() {
 
                     """
                     ansiblePlaybook = "${currentWs}/ansible/lp_samza_deploy.yml"
-                    ansibleExtraArgs = "--vault-password-file /var/lib/jenkins/secrets/vault-pass"
+                    ansibleExtraArgs = "--vault-password-file /var/lib/jenkins/secrets/vault-pass -vvvv"
                     values.put('ansiblePlaybook', ansiblePlaybook)
                     values.put('ansibleExtraArgs', ansibleExtraArgs)
                     println values
