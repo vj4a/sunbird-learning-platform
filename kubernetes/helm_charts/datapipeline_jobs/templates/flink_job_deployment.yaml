@@ -116,6 +116,7 @@ spec:
                "-Dpresto.s3.endpoint={{ .Values.s3_endpoint }}",
                "-Dpresto.s3.region={{ .Values.s3_region }}",
                "-Dpresto.s3.path-style-access={{ .Values.s3_path_style_access }}",
+               "-Djava.class.path=.:/opt/flink/opt/flink-s3-fs-presto-1.13.5.jar",
                {{- else}}
                "-Dfs.azure.account.key.{{ .Values.azure_account }}.blob.core.windows.net={{ .Values.azure_secret }}",
                {{- end}}
