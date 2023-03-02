@@ -1,6 +1,6 @@
 ---
 es_major_version: "6.x"
-es_version: "6.2.3"
+es_version: "6.8.23"
 es_version_lock: false
 es_use_repository: true
 es_templates_fileglob: "files/templates/*.json"
@@ -9,9 +9,9 @@ es_apt_url: "deb https://artifacts.elastic.co/packages/{{ es_major_version }}/ap
 es_apt_url_old: "deb http://packages.elastic.co/elasticsearch/{{ es_major_version }}/debian stable main"
 es_start_service: true
 es_java_install: true
-update_java: false
+update_java: true
 es_restart_on_change: true
-es_plugins_reinstall: false
+es_plugins_reinstall: true
 es_scripts: false
 es_templates: true
 es_user: elasticsearch
@@ -25,7 +25,7 @@ es_max_open_files: 65536
 es_max_threads: "{{ 2048 if ( es_version | version_compare('6.0.0', '<')) else 8192 }}"
 es_max_map_count: 262144
 es_allow_downgrades: false
-es_enable_xpack: false
+es_enable_xpack: true
 es_xpack_features: ["alerting","monitoring","graph","ml"]
 #These are used for internal operations performed by ansible.
 #They do not affect the current configuration
