@@ -36,7 +36,8 @@ node() {
                 values.put('ansiblePlaybook', ansiblePlaybook)
                 values.put('ansibleExtraArgs', ansibleExtraArgs)
                 println values
-                ansible_playbook_run(values)
+    //            ansible_playbook_run(values)
+    // skip azure plugin 
                 currentBuild.result = "SUCCESS"
                 currentBuild.description = "Artifact: ${values.artifact_version}, Private: ${params.private_branch}, Public: ${params.branch_or_tag}"
              }
