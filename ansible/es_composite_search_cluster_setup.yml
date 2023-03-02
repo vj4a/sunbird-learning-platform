@@ -4,7 +4,7 @@
   vars_files:
     - ['{{inventory_dir}}/secrets.yml']
   become: yes
-  pre_tasks:
+  tasks:
     - name: Uncompressing and copying to system path
       unarchive:
         src: https://sunbirdpublic.blob.core.windows.net/installation/jre-8u144-linux-x64.tar.gz
