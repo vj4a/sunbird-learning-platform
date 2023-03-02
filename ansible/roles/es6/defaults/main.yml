@@ -43,3 +43,8 @@ conf_dir: ''
 data_dirs: ''
 # JVM custom parameters
 es_jvm_custom_parameters: ''
+
+es_plugins:
+- plugin: "repository-azure"
+- plugin: "repository-s3"
+- plugin: "repository-gcs"
