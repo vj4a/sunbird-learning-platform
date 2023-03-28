@@ -1,0 +1,7 @@
+- name: Ensure oci oss bucket exists
+  command: oci os bucket get --name {{ oci_artifact_oss_bucket_name }}
+
+- name: download files from oci oss bucket
+  command: oci os object get -bn {{ oci_artifact_oss_bucket_name }} --name {{ artifact }} --file {{ local_file_or_folder_path }}
+  async: 3600
+  poll: 10
