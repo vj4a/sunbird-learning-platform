@@ -7,9 +7,23 @@ node() {
         String ANSI_RED = "\u001B[31m"
         String ANSI_YELLOW = "\u001B[33m"
 
+//        stage("upload") {
+//        def inputFile = input message: 'Upload file', parameters: [file(name: 'dialcodes.csv')]
+//        new hudson.FilePath(new File("tmp/dialcodes.csv")).copyFrom(inputFile)
+//        }
+
         stage("upload") {
         def inputFile = input message: 'Upload file', parameters: [file(name: 'dialcodes.csv')]
         new hudson.FilePath(new File("tmp/dialcodes.csv")).copyFrom(inputFile)
+
+        def fileBase64 = input message: 'Please provide a file', parameters: [base64File('dialcodes.csv')]
+        node {
+            withEnv(["fileBase64=$fileBase64"]) {
+                sh 'echo $fileBase64 | base64 -d > dialcodes.csv'
+                // powershell '[IO.File]::WriteAllBytes("dialcodes.csv", [Convert]::FromBase64String($env:fileBase64))'
+            }
+            // do something with the file stored in ./myFile.txt
+        }
         }
 
         stage('checkout public repo') {
